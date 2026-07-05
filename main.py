@@ -120,7 +120,7 @@ def flow_val_metrics(logits, gt_flow, pred_norm, *, align_corners=True, temperat
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-c', '--config', type=str, default='config/ddpm_cd.json',
+    parser.add_argument('-c', '--config', type=str, default='config/levir.json',
                         help='JSON file for configuration')
     parser.add_argument('-p', '--phase', type=str, choices=['train', 'test'],
                         help='Run either train(training + validation) or testing', default='train')

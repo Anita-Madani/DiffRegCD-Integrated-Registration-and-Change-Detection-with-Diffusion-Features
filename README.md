@@ -58,8 +58,8 @@ DiffRegCD/
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/DiffRegCD.git
-cd DiffRegCD
+git clone https://github.com/Anita-Madani/DiffRegCD-Integrated-Registration-and-Change-Detection-with-Diffusion-Features.git
+cd DiffRegCD-Integrated-Registration-and-Change-Detection-with-Diffusion-Features
 
 # conda (recommended)
 conda env create -f environment.yml

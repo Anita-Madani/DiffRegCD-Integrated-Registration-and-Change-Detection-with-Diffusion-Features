@@ -10,17 +10,16 @@
 #   bash scripts/download_weights.sh              # backbone + all datasets
 #   bash scripts/download_weights.sh levir        # backbone + one dataset
 #
-# Requires: huggingface_hub  ->  pip install "huggingface_hub[cli]"
+# Requires the Hugging Face CLI:  pip install -U huggingface_hub
 set -euo pipefail
 
-# TODO: replace with your Hugging Face repo id once weights are uploaded.
-HF_REPO="${DIFFREGCD_HF_REPO:-<HF_USER>/DiffRegCD}"
+HF_REPO="${DIFFREGCD_HF_REPO:-Anita1379m/DiffRegCD}"
 DST="checkpoints"
 mkdir -p "$DST"
 
-dl() {  # dl <path-in-repo> <local-dest>
+dl() {  # dl <path-in-repo>
   echo ">> $1"
-  huggingface-cli download "$HF_REPO" "$1" --local-dir "$DST" --local-dir-use-symlinks False
+  hf download "$HF_REPO" "$1" --local-dir "$DST"
 }
 
 # 1) Frozen DDPM backbone (pretrained diffusion feature extractor)

@@ -112,13 +112,14 @@ Then point the `dataroot` fields in the matching `config/*.json` at your dataset
 
 ## Pretrained weights
 
-Weights live on the Hugging Face Hub and download into `./checkpoints/` (the paths already
-referenced by the configs):
+Weights live on the Hugging Face Hub at
+[`Anita1379m/DiffRegCD`](https://huggingface.co/Anita1379m/DiffRegCD) and download into
+`./checkpoints/` (the paths already referenced by the configs):
 
 ```bash
-pip install "huggingface_hub[cli]"
-export DIFFREGCD_HF_REPO=<HF_USER>/DiffRegCD      # set once weights are uploaded
-bash scripts/download_weights.sh                  # backbone + all datasets
+pip install -U huggingface_hub
+bash scripts/download_weights.sh          # backbone + all datasets
+# bash scripts/download_weights.sh levir  # or a single dataset
 ```
 
 This fetches:

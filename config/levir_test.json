@@ -1,0 +1,140 @@
+{
+    "name": "ddpm-RS-CDHead-LEVIR-CD256-warm-norm-all-cd-single2-test",
+    "phase": "test",
+    "gpu_ids": [0],
+
+    "path": {
+        "log": "logs",
+        "tb_logger": "tb_logger",
+        "results": "results_single",
+        "checkpoint": "checkpoint_single",
+        "resume_state": "./checkpoints/I200000_E3"
+    },
+
+    "path_reg": {
+        "resume_state": "./checkpoints/levir/best_reg_model"
+    },
+
+    "path_cd": {
+        "log": "logs",
+        "tb_logger": "tb_logger",
+        "results": "results_single",
+        "checkpoint": "checkpoint_single",
+        "resume_state": "./checkpoints/levir/best_cd_model"
+    },
+
+    "datasets": {
+        "train": {
+            "name": "LEVIR-CD256",
+            "dataroot": "LEVIR-CD256/",
+            "resolution": 256,
+            "batch_size": 2,
+            "num_workers": 8,
+            "use_shuffle": true,
+            "data_len":-1
+        },
+        "val": {
+            "name": "LEVIR-CD256",
+            "dataroot": "LEVIR-CD256/",
+            "resolution": 256,
+            "batch_size": 2,
+            "num_workers": 8,
+            "use_shuffle": true,
+            "data_len": -1
+        },
+        "test": {
+            "name": "LEVIR-CD256",
+            "dataroot": "LEVIR-CD256/",
+            "resolution": 256,
+            "batch_size": 2,
+            "num_workers": 8,
+            "use_shuffle": false,
+            "data_len": -1
+        }
+    },
+
+    "model_cd": {
+        "feat_scales": [2, 5, 8, 11, 14],
+        "out_channels": 2,
+        "loss_type": "ce",
+        "output_cm_size": 256,
+        "psp": true,
+        "feat_type": "dec",
+        "t": [50, 100, 400]
+    },
+
+    "model": {
+        "which_model_G": "sr3",
+        "finetune_norm": false,
+        "unet": {
+            "in_channel": 3,
+            "out_channel": 3,
+            "inner_channel": 128,
+            "channel_multiplier": [1, 2, 4, 8, 8],
+            "attn_res": [16],
+            "res_blocks": 2,
+            "dropout": 0.2
+        },
+        "beta_schedule": {
+            "train": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            },
+            "val": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            },
+            "test": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            }
+        },
+        "diffusion": {
+            "image_size": 256,
+            "channels": 3,
+            "loss": "l2",
+            "conditional": false
+        }
+    },
+
+    "registration": {
+        "use_registration": true,
+        "loss_weight": 1.0,
+        "decoder_dim": 1536,         // 1024 (fd_A) + 512 (gp_post)
+        "out_dim": 1025,             // 32x32 + 1 (cls head)
+        "num_blocks": 5,
+        "attn_heads": 8,
+        "learn_temperature": true,
+        "temperature": 1.0,
+        "gp_dim": 512,
+        "basis": "fourier",
+        "no_cov": true
+    },
+
+    "train": {
+        "n_epoch": 300,
+        "desired_batch_size": 8,
+        "train_print_freq": 500,
+        "val_freq": 1,
+        "val_print_freq": 50,
+        "optimizer": {
+            "type": "adam",
+            "lr": 1e-4
+        },
+        "scheduler": {
+            "lr_policy": "linear",
+            "n_steps": 3,
+            "gamma": 0.1
+        }
+    },
+
+    "wandb": {
+        "project": "DiffRegCD"
+    }
+}

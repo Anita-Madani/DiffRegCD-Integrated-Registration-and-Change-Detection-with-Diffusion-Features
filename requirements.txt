@@ -1,0 +1,25 @@
+# Core (tested with Python 3.10, CUDA 11.x)
+torch>=1.11
+torchvision
+numpy
+scipy
+opencv-python
+pillow
+einops
+kornia
+lmdb
+tqdm
+pandas
+
+# Diffusion-feature FLOP profiling (used at model build time)
+thop
+
+# Flow visualization
+flow_vis
+
+# Logging
+tensorboardX
+wandb
+
+# Optional: memory-efficient attention (auto-detected if installed)
+# xformers

@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the following paper."
+title: "DiffRegCD: Integrated Registration and Change Detection with Diffusion Features"
+authors:
+  - family-names: Madani
+    given-names: Seyedehanita
+  - family-names: Chellappa
+    given-names: Rama
+  - family-names: Patel
+    given-names: "Vishal M."
+year: 2025
+identifiers:
+  - type: other
+    value: "arXiv:2511.07935"
+    description: arXiv preprint
+url: "https://arxiv.org/abs/2511.07935"
+preferred-citation:
+  type: article
+  title: "DiffRegCD: Integrated Registration and Change Detection with Diffusion Features"
+  authors:
+    - family-names: Madani
+      given-names: Seyedehanita
+    - family-names: Chellappa
+      given-names: Rama
+    - family-names: Patel
+      given-names: "Vishal M."
+  year: 2025
+  journal: "arXiv preprint arXiv:2511.07935"

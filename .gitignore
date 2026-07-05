@@ -1,0 +1,58 @@
+# ---- Datasets (download separately; see README) ----
+LEVIR-CD256/
+DSIFN-CD-256/
+WHU-CD-256/
+SYSU-CD/
+SVCD-CD256/
+CMU_CD/
+VL-CMU-CD/
+*/train/flow/
+*/train/t1/
+
+# ---- Weights / checkpoints (download from Hugging Face; see README) ----
+checkpoints/
+checkpoints_*/
+*.pth
+*.pt
+*.ckpt
+*.rar
+
+# ---- Experiment outputs / logs ----
+experiments/
+results*/
+logs/
+tb_logger/
+wandb/
+runs/
+*.wandb
+flow_visuals/
+out/
+output/
+
+# ---- Big archives / media ----
+*.zip
+*.tar
+*.tar.gz
+*.npy
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.ipynb_checkpoints/
+
+# ---- Env / editor / OS ----
+.venv/
+venv/
+env/
+.env
+.vscode/
+.idea/
+.DS_Store
+*.swp
